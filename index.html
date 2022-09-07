@@ -16,9 +16,10 @@ table, th, td {
 <br>
 <p id="tab"></p>
 
-<button onclick="calculer()">Compute</button>
+<button  onclick="calculer()">Compute</button>
 <p id="somme"></p>
 <p id="trie"></p>
+
 
 <script>
 let T=[];
@@ -26,9 +27,30 @@ function myFunction() {
   T.push(document.getElementById("nb").value);
   document.getElementById("tab").innerHTML = T ; 
 }
-function calculer()
-{
-
+function calculer(){
+	var sum=0;
+	let l=T.length;
+ 	for(var i=0;i<l;i++) 
+    {	
+    	console.log("T[i] ", T[i]);
+    	sum += parseInt(T[i]);
+        console.log("sum = " , sum);
+    }
+    document.getElementById("somme").innerHTML = sum;
+ 	for(var i=0;i<l-1;i++) 
+    {
+    	 for(var j=i+1;j<l;j++) 
+    	{
+   			if (parseInt(T[i])>parseInt(T[j]))
+            {
+            	var temp = T[i];
+                T[i] = T[j];
+                T[j] = temp;
+            }
+   		}
+    }
+    document.getElementById("trie").innerHTML = T ;
+    
 }
 </script>
 
